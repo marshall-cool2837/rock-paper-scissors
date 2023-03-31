@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+	<title>Rock Paper Scissors Game</title>
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Comfortaa', Arial, sans-serif;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background-color: #2c1320;
+			overflow: hidden;
+		}
+		main {
+			text-align: center;
+		}
+		button {
+			margin: 10px;
+			padding: 10px 20px;
+			font-size: 20px;
+			background-color: #5f4b66;
+			color: #fff;
+			border: none;
+			border-radius: 30px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+		button:hover {
+			background-color: #a7adc6;
+		}
+		#result {
+			color: #fff;
+			font-size: 24px;
+			margin-top: 20px;
+		}
+		.credits {
+			margin-top: 20px;
+			font-size: 14px;
+			color: #56667a;
+		}
+		.credits img {
+			height: 20px;
+			vertical-align: middle;
+			margin-left: 5px;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1 style="color: #fff;">Rock Paper Scissors</h1>
+		<p style="color: #a7adc6;">Choose your move:</p>
+		<button onclick="play('rock')"><span>&#x1F5FF;</span> Rock</button>
+		<button onclick="play('paper')"><span>&#x1F4DC;</span> Paper</button>
+		<button onclick="play('scissors')"><span>&#x270A;</span> Scissors</button>
+		<p id="result"></p>
+		<div class="credits">
+			<p style="color: #a7adc6;">Marshall Lee: Giving the prompts</p>
+			<p style="color: #a7adc6;">ChatGPT: Generating the game <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/800px-ChatGPT_logo.svg.png"></p>
+            <p style="color: #a7adc6;">Google Fonts: For the fonts (Comfortaa)</p>
+		</div>
+	</main>
+	<script>
+		function play(playerMove) {
+			const moves = ['rock', 'paper', 'scissors'];
+			const computerMove = moves[Math.floor(Math.random() * moves.length)];
+			let result;
+			if (playerMove === computerMove) {
+				result = "It's a tie!";
+			} else if (
+				(playerMove === 'rock' && computerMove === 'scissors') ||
+				(playerMove === 'paper' && computerMove === 'rock') ||
+				(playerMove === 'scissors' && computerMove === 'paper')
+			) {
+				result = "You win!";
+			} else {
+				result = "Computer wins!";
+			}
+			document.getElementById('result').innerHTML = `You played ${playerMove}, computer played ${computerMove}. ${result}`;
+		}
+	</script>
+</body>
+</html>
